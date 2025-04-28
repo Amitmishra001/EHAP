@@ -151,7 +151,7 @@ def predict():
         
         # Generate PDF Report
         pdf_path = generate_pdf_report(name,age, sex, bp, chol, cp, thalach, prediction_text, suggestion)
-        pdf_url = 'http://127.0.0.1:5000/static/reports/patient_report.pdf'
+        pdf_url = 'http://127.0.0.1:8100/static/reports/patient_report.pdf'
         return render_template('index.html', prediction_text=prediction_text, report_link=pdf_path,pdf_url=pdf_url)
                 
 
@@ -160,4 +160,4 @@ def predict():
         return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8100)
