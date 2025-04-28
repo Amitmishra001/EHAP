@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Heart Disease Predictor</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Heart Disease Prediction</h1>
+      <form action="/predict" method="POST">
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          required
+        /><br />
+        <input
+          type="number"
+          name="age"
+          placeholder="Enter Age"
+          required
+        /><br />
+        <input
+          type="number"
+          name="sex"
+          placeholder="Enter Sex (1=Male, 0=Female)"
+          required
+        /><br />
+        <input
+          type="number"
+          name="bp"
+          placeholder="Enter Blood Pressure (trestbps)"
+          required
+        /><br />
+        <input
+          type="number"
+          name="chol"
+          placeholder="Enter Cholesterol"
+          required
+        /><br />
+        <input
+          type="number"
+          name="cp"
+          placeholder="Chest Pain Type (0-3)"
+          required
+        /><br />
+        <input
+          type="number"
+          name="thalach"
+          placeholder="Enter Max Heart Rate"
+          required
+        /><br />
+        <button type="submit">Predict</button>
+      </form>
+      <a href="{{ pdf_url if pdf_url else '#' }}" target="_blank" download>Download Patient Report (PDF)</a>
+      {% if prediction_text %}
+      <h2>Result: {{ prediction_text }}</h2>
+      {% endif %}
+    </div>
+  </body>
+</html>
